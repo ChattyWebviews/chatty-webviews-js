@@ -1,8 +1,6 @@
 
 const handlers = {};
 
-let cwMessageHandler; 
-
 function attach() {
     window['publish'] = (topic, message) => {
         window.dispatchEvent(new CustomEvent('pubsub', {
@@ -29,7 +27,7 @@ function attach() {
     });
 }
 
-let subscribe = function(topic, callback) {
+function subscribe(topic, callback) {
     window['subscribe'](topic, msg => {
       callback(msg);
     });
@@ -49,7 +47,6 @@ function sendMessage(topic, message) {
 }
 
 function isIos() {
-    console.log("CALLING")
     return window['webkit'] && window['webkit'].messageHandlers && window['webkit'].messageHandlers.cwMessageHandler
 }
 
