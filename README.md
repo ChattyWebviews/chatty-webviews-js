@@ -67,7 +67,7 @@ export class MockHandler {
     constructor() {
         subscribe("get-items", (msg: any) => {
             let items = ["item1", "item2"];
-            sendMessage('update-verbs', {items})
+            sendMessage('update-items', {items})
           })
 
     }
