@@ -4,11 +4,11 @@ Chatty Webviews adds easy and simple communication mechanism between your native
 
 ## Installation
 
-chatty-webviews-js is available through npm. To install
+chatty-webviews is available through npm. To install
 it, run this command in your js project folder:
 
 ```shell
-npm install chatty-webviews-js
+npm install chatty-webviews
 ```
 
 ## Usage 
@@ -28,17 +28,23 @@ export class AppComponent {
 }
 ```
 
-### Subscribe for incoming messages
+### Subscribe for / Unsubscribe from incoming messages
 
 ```js
 import { subscribe } from 'chatty-webviews';
 
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnDestroy {
+  
+  chattySubscription = {}
 
   ngAfterViewInit(): void {
-    subscribe('update-items', (msg: any) => {
+    chattySubscription = subscribe('update-items', (msg: any) => {
       console.log(msg);
     })
+  }
+  
+  ngOnDestroy() {
+    chattySubscription.unsubscribe()
   }
 }
 ```
@@ -49,7 +55,7 @@ export class HomeComponent implements AfterViewInit {
 ```js
 import { sendMessage } from 'chatty-webviews';
 
-export class HomeComponent implements AfterViewInit{
+export class HomeComponent implements AfterViewInit {
 
   fetchItems(limit: number) {
     sendMessage("get-items", {limit});
