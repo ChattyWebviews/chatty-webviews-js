@@ -14,28 +14,16 @@ npm install chatty-webviews
 ## Usage 
 
 ### Bootstrap messaging service
-Call *attach* method in the starting point of your module where you need to subscribe for or send messages.
-
-```js
-import { attach } from 'chatty-webviews';
-
-export class AppComponent {
-
-  constructor() {
-    attach();  
-  }
-  
-}
-```
+The messaging service will be initialized automatically once you import it.
 
 ### Subscribe for / Unsubscribe from incoming messages
 
 ```js
-import { subscribe } from 'chatty-webviews';
+import { subscribe, ChattySubscription } from 'chatty-webviews';
 
 export class HomeComponent implements AfterViewInit, OnDestroy {
   
-  chattySubscription = {}
+  chattySubscription: ChattySubscription
 
   ngAfterViewInit(): void {
     chattySubscription = subscribe('update-items', (msg: any) => {
@@ -91,7 +79,6 @@ export class AppComponent {
   mockHandler?: MockHandler;
   
   constructor() {
-    attach();
     if (!isIos()) {
       this.mockHandler = new MockHandler();
     }
