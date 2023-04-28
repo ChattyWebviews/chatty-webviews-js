@@ -1,0 +1,10 @@
+{
+  "name": "chatty-webviews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
+  "author": "",
+  "license": "ISC"
+}
