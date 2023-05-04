@@ -1,11 +1,13 @@
 const chattyPubSubEventType = "ChattyPubSub";
 const handlers: Record<string, Array<MessageHandler>> = {};
 
-window.addEventListener(chattyPubSubEventType, (ev: Event) => {
-    const { topic, message } = (ev as CustomEvent<ChattyMessage>).detail;
-    const topicHandlers = handlers[topic] || [];
-    topicHandlers.forEach((handler) => handler(message));
-});
+export function attach() {
+    window.addEventListener(chattyPubSubEventType, (ev: Event) => {
+        const { topic, message } = (ev as CustomEvent<ChattyMessage>).detail;
+        const topicHandlers = handlers[topic] || [];
+        topicHandlers.forEach((handler) => handler(message));
+    });
+}
 
 export function subscribe(topic: string, handler: MessageHandler): ChattySubscription {
     const topicHandlers = handlers[topic] || [];
