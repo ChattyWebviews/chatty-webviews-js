@@ -1,10 +1,20 @@
 {
-  "name": "chatty-webviews",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@chatty-webviews/js",
+  "version": "0.0.1",
+  "description": "ChattyWebviews JS SDK",
+  "repository": "github:ChattyWebviews/chatty-webviews-js",
+  "homepage": "https://github.com/ChattyWebviews/chatty-webviews-js",
+  "keywords": [
+    "mobile",
+    "webview",
+    "native",
+    "messaging",
+    "ios",
+    "android"
+  ],
+  "author": "vlado.mutafov@gmail.com",
+  "license": "MIT",
   "main": "./index.js",
   "module": "./index.mjs",
-  "types": "./index.d.ts",
-  "author": "",
-  "license": "ISC"
+  "types": "./index.d.ts"
 }
