@@ -8,7 +8,7 @@ chatty-webviews is available through npm. To install
 it, run this command in your js project folder:
 
 ```shell
-npm install chatty-webviews
+npm install @chatty-webviews/js
 ```
 
 ## Usage 
@@ -17,7 +17,7 @@ npm install chatty-webviews
 Call *attach* method in the starting point of your module where you need to subscribe for or send messages.
 
 ```js
-import { attach } from 'chatty-webviews';
+import { attach } from '@chatty-webviews/js';
 export class AppComponent {
   constructor() {
     attach();  
@@ -29,7 +29,7 @@ export class AppComponent {
 ### Subscribe for / Unsubscribe from incoming messages
 
 ```js
-import { subscribe, ChattySubscription } from 'chatty-webviews';
+import { subscribe, ChattySubscription } from '@chatty-webviews/js';
 
 export class HomeComponent implements AfterViewInit, OnDestroy {
   
@@ -51,7 +51,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
 
 ```js
-import { sendMessage } from 'chatty-webviews';
+import { sendMessage } from '@chatty-webviews/js';
 
 export class HomeComponent implements AfterViewInit {
 
@@ -65,7 +65,7 @@ export class HomeComponent implements AfterViewInit {
 To test in a local environment (e.g. when the app is not running in a mobile one) you can create a mock service:
 
 ```js
-import { subscribe, sendMessage } from 'chatty-webviews';
+import { subscribe, sendMessage } from '@chatty-webviews/js';
 
 export class MockHandler {
     constructor() {
@@ -81,7 +81,7 @@ export class MockHandler {
 Then initialize it conditionally (i.e. if not in a mobile app):
 
 ```js
-import { attach, isIos } from 'chatty-webviews';
+import { attach, isIos } from '@chatty-webviews/js';
 import { MockHandler } from './handlers/MockHandler';
 
 export class AppComponent {
