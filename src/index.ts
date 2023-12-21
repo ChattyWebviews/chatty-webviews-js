@@ -29,6 +29,8 @@ export function sendMessage(topic: string, message: Message): void {
             topic: topic,
             message: message
         });
+    } else if (isAndroid()) { // Assuming you have a function like isAndroidWebView
+        (window as any).Android.sendMessage(topic, JSON.stringify(message));
     }
 
     //push to web handlers too
@@ -40,6 +42,12 @@ export function sendMessage(topic: string, message: Message): void {
 export function isIos(): boolean {
     return !!(window as any).webkit?.messageHandlers?.cwMessageHandler;
 }
+
+export function isAndroid(): boolean {
+    var userAgent = navigator.userAgent;
+    return /cw-android/i.test(userAgent);
+}
+
 
 export type Message = any
 export type MessageHandler = (message: Message) => void;
